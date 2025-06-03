@@ -5,7 +5,7 @@ import requests
 
 # Get live exchange rates using an API
 def fetch_live_rates():
-    api_key = 'f5b9c84148946462ac02488a'
+    api_key = 'Fetch your API key from https://www.exchangerate-api.com/'
     url = f'https://v6.exchangerate-api.com/v6/{api_key}/latest/USD'
     response = requests.get(url)
     data = response.json()
