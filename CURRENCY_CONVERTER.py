@@ -1,6 +1,26 @@
 import tkinter as tk
 from tkinter import ttk, messagebox
 from PIL import Image, ImageTk
+import requests
+
+# Get live exchange rates using an API
+def fetch_live_rates():
+    api_key = 'f5b9c84148946462ac02488a'
+    url = f'https://v6.exchangerate-api.com/v6/{api_key}/latest/USD'
+    response = requests.get(url)
+    data = response.json()
+
+    if response.status_code == 200 and data['result'] == 'success':
+        return data['conversion_rates']
+    else:
+        messagebox.showerror("API Error", "Failed to fetch live exchange rates.")
+        return None
+
+# Update global rates_vs_usd with live data
+live_rates = fetch_live_rates()
+if live_rates:
+    rates_vs_usd = live_rates
+
 
 
 # A rough reference for currency conversion 
